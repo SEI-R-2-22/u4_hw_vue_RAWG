@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="search">
-      <form @submit="getSearchResults(e)">
+      <form @submit="getSearchResults">
           <input 
+            :searchQuery="searchQuery"
             name="searchQuery"
             :value="searchQuery"
-            @change="handleChange(event)"/>
+            @change="handleChange"/>
           <button> </button>
         </form>
       <h2>Search Results</h2>
@@ -49,14 +50,14 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
         const res = await axios.get(GENRES_URL)
         this.genres = res.data.results
       },
-      async getSearchResults(e, searchQuery) {
+      async getSearchResults(e) {
         e.preventDefault()
-        const res = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchQuery}`)
-        this.searchResults = res.data
+        const res = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${this.searchQuery}`)
+        this.searchResults.push(res.data.results)
         this.searched = true
       },
       handleChange(event) {
-        this.searchQuery = event
+        this.searchQuery = event.target.value
       },
       selectGame(gameId) {
         console.log(gameId)
