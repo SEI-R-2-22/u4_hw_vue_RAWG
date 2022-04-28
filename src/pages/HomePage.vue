@@ -18,7 +18,7 @@
     <div class="genres" v-if="!searched">
       <h2>Genres</h2>
       <section class="container-grid">
-          <GenreCard :genre="genre" v-for="genre in genres" :key="genre.id" />
+          <GenreCard :genre="genre" v-for="genre in genres" :key="genre.id"  @click="selectGenre(genre.id)"/>
       </section>
     </div>
   </div>
@@ -50,6 +50,7 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
       async getGenres() {
         const res = await axios.get(GENRES_URL)
         this.genres = res.data.results
+        // console.log(this.genres, "GENRES")
       },
       async getSearchResults(e) {
         e.preventDefault()
@@ -62,6 +63,9 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
       },
       selectGame(gameId) {
         this.$router.push(`/details/${gameId}`)
+      },
+      selectGenre(genreId){
+        this.$router.push(`/games/${genreId}`)
       }
     }
   }
