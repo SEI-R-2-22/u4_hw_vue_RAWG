@@ -1,16 +1,24 @@
 <template>
-  <div class="card">
+  <div class="card" @click="selectGenre(genre.id)">
     <div class="image-wrapper">
-      <!-- Image Goes Here -->
+      <img :src="genre.image_background" />
     </div>
     <div class="info-wrapper flex-col">
-      <!-- Genre Name Goes Here -->
+      <h4>{{ genre.name }}</h4>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'GenreCard'
+    name: 'GenreCard',
+    props: {
+      genre: {}
+    },
+    methods: {
+      selectGenre(genreId) {
+        this.$router.push(`/games/${genreId}`)
+      }
+    }
   }
 </script>
