@@ -74,10 +74,10 @@ You'll need to create your own routes and add them to the `routes` array utilizi
 
 | Component   | Path              | Name          |
 | ----------- | ----------------- | ------------- |
-| Home        | /                 | 'Home'        |
+| HomePage    | /                 | 'HomePage'    |
 | ViewGames   | /games            | 'ViewGames'   |
 | GameDetails | /details/:game_id | 'GameDetails' |
-| About       | /about            | 'About'       |
+| AboutPage   | /about            | 'AboutPage'   |
 
 ## Step 2: Setting Up The Router View
 
