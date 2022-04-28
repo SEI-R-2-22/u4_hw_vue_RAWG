@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <NavBar />
     <header>
-      <router-view header="Chinwendu's RAWG Vue Router"></router-view>
+       <NavBar />
     </header>
     <main>
       <router-view header="Game Play"></router-view>
