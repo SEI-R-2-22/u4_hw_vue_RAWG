@@ -14,7 +14,7 @@
         </div>
         <div className="container-grid" v-else-if='sort'>
             <GameCard v-for='game in games' :key='game.id' :name='game.name' :image='game.background_image' :rating='game.rating'/>
-            <button @click="updateGamesArray('back')" v-if='!prev'>Back</button>
+            <button @click="updateGamesArray('back')" v-if='prev'>Back</button>
             <button @click="updateGamesArray('next')">Next</button>
         </div>
     </div>
@@ -45,7 +45,6 @@
                 // Get Genre Id here
                 const genreId = this.$route.params.genre_id
                 const res = await axios.get(`https://api.rawg.io/api/games?genres=${genreId}&key=${API_KEY}`)
-                console.log(res)
                 this.games = res.data.results
                 this.next = res.data.next
                 this.prev = res.data.previous
@@ -67,12 +66,9 @@
             },
             setSort(value) {
                 this.sort = value
-                console.log(this.sort)
 
                 if(value == 'ascend'){
-                    const sortedGame = []
-
-                    const sorted = this.games.sort((a, b) => {
+                    this.games.sort((a, b) => {
                         if (a.rating > b.rating) {
                             return 1;
                         }
@@ -81,16 +77,8 @@
                         }
                             return 0;
                     })
-
-                    sorted.forEach((game) => {
-                        sortedGame.push(game);
-                    });
-
-                    return sortedGame;
                 }else if(value == 'decend'){
-                    const sortedGame = []
-
-                    const sorted = this.games.sort((a, b) => {
+                    this.games.sort((a, b) => {
                         if (a.rating < b.rating) {
                             return 1;
                         }
@@ -99,12 +87,6 @@
                         }
                             return 0;
                     })
-
-                    sorted.forEach((game) => {
-                        sortedGame.push(game);
-                    });
-
-                    return sortedGame;
                 }
             }
         },
