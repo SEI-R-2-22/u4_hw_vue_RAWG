@@ -7,11 +7,11 @@
             name="searchQuery"
             :value="searchQuery"
             @change="handleChange"/>
-          <button> </button>
+          <button>Search</button>
         </form>
       <h2>Search Results</h2>
       <section class="search-results container-grid">
-        <GameCard :game="game" :varId="varId" v-for="game in searchResults" :key="game.id" @click="selectGame(game.id)"/>
+        <GameCard :game="game" v-for="game in searchResults" :key="game.id" @click="selectGame(game.id)"/>
       </section>
     </div>
 
@@ -31,7 +31,6 @@ import GenreCard from '../components/GenreCard.vue'
 const API_KEY = process.env.VUE_APP_API_KEY
 
 const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
-//const GAME_DETAIL_URL = `https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`
 //const DLC_URL = `https://api.rawg.io/api/games/${gameId}/additions?key=${API_KEY}`
 
   export default {
@@ -44,8 +43,7 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
       genres: [],
       searchQuery: '',
       searchResults: [],
-      searched: false,
-      // varId: ""
+      searched: false
     }),
     mounted: function(){this.getGenres()},
     methods: {
@@ -58,13 +56,11 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
         const res = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${this.searchQuery}`)
         this.searchResults = res.data.results
         this.searched = true
-        console.log(this.$router, "ROUTE")
       },
       handleChange(event) {
         this.searchQuery = event.target.value
       },
       selectGame(gameId) {
-        // this.varId = gameId
         this.$router.push(`/details/${gameId}`)
       }
     }

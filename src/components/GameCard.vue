@@ -1,7 +1,7 @@
 <template>
   <div class="card game-card">
     <div class="image-wrapper" v-if='game'>
-     <img :src="game.image_background" />
+     <img :src="game.background_image" />
     </div>
     <div class="info-wrapper flex-col">
       <h2>{{game.name}}</h2>
