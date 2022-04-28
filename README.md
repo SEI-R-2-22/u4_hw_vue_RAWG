@@ -73,7 +73,7 @@ You'll need to create your own routes and add them to the `routes` array utilizi
 | GameDetails | /details/:game_id | 'GameDetails' |
 | About       | /about            | 'About'       |
 
-## Step 3: Setting Up The Router View
+## Step 2: Setting Up The Router View
 
 In `App.vue`, you're provided with the following:
 
@@ -100,14 +100,14 @@ In `App.vue`, you're provided with the following:
 - You'll want to utilize the `NavBar` component and add it between the provided `header` tags. **Remember to import the NavBar component and add it to your `components` object.**
 - Don't forget to use the `router-view` component as this is where our components will get rendered. You can add it in between the provided `main` tags.
 
-## Step 4: Loading Initial Data
+## Step 3: Loading Initial Data
 
 In `HomePage.vue`, you've been provided with a few methods and some initial state. In this component, you should fire an axios request that retrieves a list of genres in the `getGenres` method. This method should be invoked once the component is mounted and should update the genre state.
 
 - Once you've retrieved a list of genres from your API, iterate through the genre state and return a `GenreCard` for each item.
 - The `GenreCard` should accept the image and name of each genre as props. You'll need to wire these up in the `GenreCard` component following the included prompts.
 
-## Step 5: Setting Up Search Functionality
+## Step 4: Setting Up Search Functionality
 
 In `HomePage.vue`, set up a form within the provided `search` classed tag. It should be displayed above the provided `h2`. This form should have an input and a button.
 
@@ -116,7 +116,7 @@ In `HomePage.vue`, set up a form within the provided `search` classed tag. It sh
 - The `@submit` event should fire the `getSearchResults` method which in turn should update the `searchResults` array.
 - The `searched` state should be updated to `true` once the results are retrieved. If the the state is true, conditionally render the provided `div` with class of `genres` to be hidden. **The `!` operator may be useful here.**
 
-## Step 6: Listing The Search Results
+## Step 5: Listing The Search Results
 
 Now that we have the search results in state, you'll want to bring in the `GameCard` component in `HomePage.vue`. You should return a new card for each item in the `searchResults` array.
 
@@ -125,7 +125,7 @@ Now that we have the search results in state, you'll want to bring in the `GameC
 - Display these props in the noted sections within `GameCard`.
 - Don't forget to declare which props it will be receiving.
 
-## Step 7: Navigation To Game Details
+## Step 6: Navigation To Game Details
 
 Next we'll want to select a game and view the game details.
 
@@ -134,7 +134,7 @@ Next we'll want to select a game and view the game details.
 - The `selectGame` method should navigate you to `/detail/:game_id`. The `game_id` parameter gets replaced with the provided `gameId` argument.
   - **Hint: `this.$router.someMethodThatNavigates` may be useful here.**
 
-## Step 8: View Game Details
+## Step 7: View Game Details
 
 Once you've navigated to the `GameDetails` component, you can now start wiring the component to display some information.
 
@@ -160,7 +160,7 @@ Create two pages for `ViewPlatforms` and `PlatformDetails` to display the platfo
 
 For completion you must have:
 
-- All parts of the lab completed **not including** the bonus. (Steps 1-8)
+- All parts of the lab completed **not including** the bonus. (Steps 1-7)
 - Make the genres clickable, this should navigate you to a new page where it displays a list of games by that genre. (Hint: This will require a new route and axios call).
   - The API endpoint should resemble the following: `https://api.rawg.io/api/games?genres=<genreid>&key=<your key>`
 - This page should display each game and it's rating prominently and users should have the ability to **sort** games by rating.
