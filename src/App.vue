@@ -4,7 +4,7 @@
       <NavBar />
     </header>
     <main>
-       <router-view header="Vue RAWG"></router-view>
+       <router-view></router-view>
     </main>
   </div>
 </template>

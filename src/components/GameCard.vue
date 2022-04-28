@@ -1,16 +1,19 @@
 <template>
   <div class="card game-card">
-    <div class="image-wrapper">
-      <!-- Image Goes Here -->
+    <div class="image-wrapper" v-if='game'>
+     <img :src="game.image_background" />
     </div>
     <div class="info-wrapper flex-col">
-      <!-- Game Name Goes Here -->
+      <h2>{{game.name}}</h2>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'GameCard'
+    name: 'GameCard',
+    props: {
+      game: {}
+    }
   }
 </script>
