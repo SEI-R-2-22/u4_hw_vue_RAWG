@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <header>
-      <!-- Nav Goes Here -->
+      <NavBar />
     </header>
     <main>
-      <!-- Router View Goes Here -->
+      <router-view header="HomePage"></router-view>
     </main>
   </div>
 </template>
 
 <script>
+  import NavBar from './components/NavBar'
   export default {
     name: 'App',
-    components: {}
+    components: {NavBar}
   }
 </script>
