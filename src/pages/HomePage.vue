@@ -1,18 +1,23 @@
 <template>
   <div>
     <div class="search">
-      <!-- Search Form Goes Here -->
+      <form @submit="getSearchResults(e)">
+          <input 
+            name="searchQuery"
+            :value="searchQuery"
+            @change="handleChange(event)"/>
+          <button> </button>
+        </form>
       <h2>Search Results</h2>
-      <section class="search-results container-grid"></section>
+      <section class="search-results container-grid">
+        
+      </section>
     </div>
 
-    <div class="genres">
+    <div class="genres" v-if="!searched">
       <h2>Genres</h2>
       <section class="container-grid">
-          <GenreCard :key="genre.id" v-for="genre in genres">
-            <h2>{{genre.name}}</h2>
-            <img :src="genre.image_background" />
-          </GenreCard>
+          <GenreCard :genre="genre" v-for="genre in genres" :key="genre.id" />
       </section>
     </div>
   </div>
@@ -20,9 +25,9 @@
 
 <script>
 import axios from 'axios'
-//import GenreCard from '../components/GenreCard.vue'
+import GenreCard from '../components/GenreCard.vue'
 const API_KEY = process.env.VUE_APP_API_KEY
-//const SEARCH_URL = `https://api.rawg.io/api/games?key=${API_KEY}&search=${searchQuery}`
+
 const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
 //const GAME_DETAIL_URL = `https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`
 //const DLC_URL = `https://api.rawg.io/api/games/${gameId}/additions?key=${API_KEY}`
@@ -30,7 +35,7 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
   export default {
     name: 'HomePage',
     components: {
-      //GenreCard
+      GenreCard
     },
     data: () => ({
       genres: [],
@@ -43,13 +48,15 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
       async getGenres() {
         const res = await axios.get(GENRES_URL)
         this.genres = res.data.results
-        console.log(this.genres, "RES")
       },
-      async getSearchResults(e) {
+      async getSearchResults(e, searchQuery) {
         e.preventDefault()
+        const res = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchQuery}`)
+        this.searchResults = res.data
+        this.searched = true
       },
       handleChange(event) {
-        console.log(event)
+        this.searchQuery = event
       },
       selectGame(gameId) {
         console.log(gameId)
@@ -60,7 +67,7 @@ const GENRES_URL = `https://api.rawg.io/api/genres?key=${API_KEY}`
 
 <style scoped>
 img{
-  max-width: 30vw;
-  max-height: 70vw;
+  /* max-width: 30vw;
+  max-height: 70vw; */
 }
 </style>
