@@ -41,6 +41,12 @@ Let's take a look at the structure of the app we've just cloned. You've been pro
 
 ## Step 1: Setting Up Routes
 
+Start by installing Vue Router:
+
+```sh
+npm install vue-router
+```
+
 Let's start with `main.js`.
 
 **You can see that the router has already been wired up for you here. You'll just have to write your own routes.**
