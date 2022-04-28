@@ -137,7 +137,7 @@ Next we'll want to select a game and view the game details.
 
 - Attach an `@click` event to the `GameCard` component, it should trigger the `selectGame` method.
   - **Hint: You can invoke the method to provide the `gameId` during the `@click` event.**
-- The `selectGame` method should navigate you to `/detail/:game_id`. The `game_id` parameter gets replaced with the provided `gameId` argument.
+- The `selectGame` method should navigate you to `/details/:game_id`. The `game_id` parameter gets replaced with the provided `gameId` argument.
   - **Hint: `this.$router.someMethodThatNavigates` may be useful here.**
 
 ## Step 7: View Game Details
