@@ -14,7 +14,7 @@
     <div class="genres" v-if='!searched'>
       <h2>Genres</h2>
       <section class="container-grid">
-        <genre-card :genre='genre' v-for='genre in genres' :key='genre.id'/>
+        <genre-card :genre='genre' v-for='genre in genres' :key='genre.id' @selectGenre="selectGenre"/>
       </section>
     </div>
     
@@ -64,6 +64,9 @@ const API_KEY = "93d83988c44f4db4a5691fe1a296495f"
       selectGame(gameId) {
         this.$router.push(`/details/${gameId}`)
         console.log(gameId)
+      },
+      selectGenre(genreId) {
+        this.$router.push(`/games/${genreId}`)
       }
     }
   }

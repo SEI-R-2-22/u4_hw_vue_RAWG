@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="selectGenre(this.genre.id)">
     <div class="image-wrapper">
       <img :src="genre.image_background" alt="">
     </div>
@@ -14,6 +14,11 @@
     name: 'GenreCard',
     props: {
       genre: {}
+    },
+    methods: {
+      selectGenre(genreId) {
+        this.$emit('selectGenre', genreId)
+      }
     }
   }
 </script>
