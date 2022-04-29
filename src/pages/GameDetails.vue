@@ -1,7 +1,12 @@
 <template>
-  <div class="game-content">
+  <div class="game-content" >
     <section class="image-container">
-      <div></div>
+      <div>
+        <img :src="image" alt="">
+        <h3>{{ name }}</h3>
+        <p>{{ description }}</p>
+        <router-link to="/"><button>Back</button></router-link>
+      </div>
     </section>
     <section class="details">
       <div class="flex-row space"></div>
@@ -13,15 +18,32 @@
 </template>
 
 <script>
+  import axios from 'axios'
+  const API_KEY = process.env.VUE_APP_RAWG_KEY
+
   export default {
     name: 'GameDetails',
+    
     data: () => ({
-      gameDetails: null
+      gameDetails: null,
+      gameId: null,
+      image: "",
+      name: "",
+      description: ""
     }),
-    mounted() {},
+    mounted() {
+      this.gameId = parseInt(this.$route.params.game_id)
+      this.getGameDetails(this.gameId)
+    },
     methods: {
       async getGameDetails() {
-        // Get game id from router here
+        
+        const res = await axios.get(`https://api.rawg.io/api/games/${this.gameId}?key=${API_KEY}`)
+        this.gameDetails = res.data
+        this.image = res.data.background_image
+        this.name = res.data.name
+        this. description = res.data.description_raw
+        console.log(res.data)
       }
     }
   }
