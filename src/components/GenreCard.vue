@@ -1,16 +1,19 @@
 <template>
   <div class="card">
     <div class="image-wrapper">
-      <!-- Image Goes Here -->
+      <img :src="genre.image_background" alt="">
     </div>
     <div class="info-wrapper flex-col">
-      <!-- Genre Name Goes Here -->
+      <h3>{{ genre.name }}</h3>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'GenreCard'
+    name: 'GenreCard',
+    props: {
+      genre: {}
+    }
   }
 </script>
