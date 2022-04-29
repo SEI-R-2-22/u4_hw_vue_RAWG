@@ -16,7 +16,7 @@
       <h2>Genres</h2>
       <section class="container-grid">
         <!-- <GenreCard :v-for="genre in genres" :key="genre.id" :img="genre.image_background" :name="genre.name"/> -->
-        <GenreCard v-for="genre in genres" :key="genre.id" :img="genre.image_background" :gname="genre.name" />
+        <GenreCard v-for="genre in genres" :key="genre.id" :img="genre.image_background" :gname="genre.name"  @click="selectGenre(genre.id)"/>
       </section>
     </div>
   </div>
@@ -59,6 +59,10 @@ const API_KEY = process.env.VUE_APP_API
       selectGame(gameId) {
         console.log(gameId)
         this.$router.push(`/details/${gameId}`)
+      },
+     selectGenre(genre) {
+        console.log(genre)
+        this.$router.push(`/games/${genre}`)
       }
     },
     components:{
