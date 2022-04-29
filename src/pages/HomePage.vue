@@ -1,15 +1,20 @@
 <template>
   <div>
     <div class="search">
-      <!-- Search Form Goes Here -->
+      <form v-on:submit="getSearchResults" >
+        <input :value="searchQuery" @input="handleChange" />
+        <button>Search</button>
+      </form>
       <h2>Search Results</h2>
-      <section class="search-results container-grid"></section>
+      <section class="search-results container-grid" v-for="search in searchResults" :key="search.id">
+        <GameCard @click="selectGame(search.id)" v-if='searchResults' :searchResults='searchResults' :name='search.name' :image='search.background_image' :rating='search.rating' />
+      </section>
     </div>
 
     <div class="genres">
       <h2>Genres</h2>
       <section class="container-grid" v-for="genre in genres" :key="genre.id">
-        <GenreCard v-if='genres' :genres="genres" :image="genre.image_background" :name="genre.name" @getGenres="getGenres"/>
+        <GenreCard @click="selectGenre(genre.id)" v-if='genres' :genres="genres" :image="genre.image_background" :name="genre.name" @getGenres="getGenres"/>
       </section>
     </div>
   </div>
@@ -18,12 +23,13 @@
 <script>
   import axios from 'axios'
   import GenreCard from '../components/GenreCard.vue'
+  import GameCard from '../components/GameCard.vue'
   const API_KEY = process.env.VUE_APP_RAWG_KEY
-  console.log(API_KEY)
   export default {
     name: 'HomePage',
     components: {
-      GenreCard
+      GenreCard,
+      GameCard
     },
     data: () => ({
       genres: [],
@@ -37,17 +43,22 @@
     methods: {
       async getGenres() {
         const res = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-        console.log(res.data, 'GENRES RESPONSE!!')
         this.genres = res.data.results
       },
       async getSearchResults(e) {
         e.preventDefault()
+        const res = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${this.searchQuery}`)
+        this.searchResults = res.data.results
+        this.searched = !this.searched
       },
       handleChange(event) {
-        console.log(event)
+        this.searchQuery = event.target.value
       },
       selectGame(gameId) {
-        console.log(gameId)
+        this.$router.push(`/details/${gameId}`)
+      },
+      selectGenre(genreId) {
+        this.$router.push(`/games/${genreId}`)
       }
     }
   }
