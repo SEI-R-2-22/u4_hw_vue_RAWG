@@ -1,5 +1,5 @@
 <template>
-  <button @click="sortGame">{{ascending ? "Sort by Ascending" : "Sort by Descending"  }}</button>
+  <button @click="sortGame">{{ascending ? "Sort by Descending" : "Sort by Ascending"  }}</button>
   <div className="container-grid" v-if="games">
     <GameCard  v-for="game in games" :key="game.id" :image="game.background_image" :name="game.name" :rating="game.rating "/>
   </div>
