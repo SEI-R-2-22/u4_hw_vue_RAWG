@@ -1,10 +1,10 @@
 <template>
   <div class="card game-card">
     <div class="image-wrapper">
-      <!-- Image Goes Here -->
+      <img :src="image" alt="">
     </div>
     <div class="info-wrapper flex-col">
-      <!-- Game Name Goes Here -->
+      <h3>{{}}</h3>
     </div>
   </div>
 </template>
