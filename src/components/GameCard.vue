@@ -1,16 +1,22 @@
 <template>
   <div class="card game-card">
     <div class="image-wrapper">
-      <!-- Image Goes Here -->
+      <img :src='searchResult.background_image' alt=''>
     </div>
     <div class="info-wrapper flex-col">
-      <!-- Game Name Goes Here -->
+      <h3>{{ searchResult.name}}</h3>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'GameCard'
+    name: 'GameCard',
+    props: ['searchResult'],
+    methods: {
+      selectGame(gameId) {
+        this.$emit('selectGame', gameId)
+      }
+    }
   }
 </script>
