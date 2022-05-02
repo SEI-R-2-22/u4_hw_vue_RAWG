@@ -1,16 +1,26 @@
 <template>
   <div class="card">
-    <div class="image-wrapper">
-      <!-- Image Goes Here -->
-    </div>
-    <div class="info-wrapper flex-col">
-      <!-- Genre Name Goes Here -->
+    <div class="card" @click="selectGenre(this.genre.id)">
+      <div class="image-wrapper">
+        <img :src="genre.image_background" />
+      </div>
+      <div class="info-wrapper flex-col">
+        <h2>{{ genre.name }}</h2>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'GenreCard'
-  }
+export default {
+  name: "GenreCard",
+  props: {
+    genre: {},
+  },
+  methods: {
+    selectGenre(genreId) {
+      this.$emit("selectGenre", genreId);
+    },
+  },
+};
 </script>
