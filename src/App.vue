@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <header>
-      <!-- Nav Goes Here -->
+      <Navbar />
     </header>
     <main>
-      <!-- Router View Goes Here -->
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script>
+  import Navbar from './components/NavBar.vue'
   export default {
     name: 'App',
-    components: {}
+    components: {
+      Navbar
+    }
   }
 </script>
