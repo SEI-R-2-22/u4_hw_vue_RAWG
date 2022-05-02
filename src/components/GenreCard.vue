@@ -1,10 +1,10 @@
 <template>
   <div class="card">
     <div class="image-wrapper">
-      <!-- Image Goes Here -->
+      <img :src="image"/>
     </div>
     <div class="info-wrapper flex-col">
-      <!-- Genre Name Goes Here -->
+      <h3>{{name}}</h3>
     </div>
   </div>
 </template>
