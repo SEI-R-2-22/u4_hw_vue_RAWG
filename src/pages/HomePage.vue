@@ -1,25 +1,22 @@
 <template>
   <div>
-    <div class="search">
-      <h2>Search Results</h2>
+    <div class="search background">
+      <div class="centered">
+        <h1>Welcome to RAWG Library</h1>
+        <h2>Find your games now!</h2>
+      </div>
       <form @submit="getSearchResults" class="input-container">
-        <input
-          @input="handleChange"
-          placeholder="Search"
-          :value="searchQuery"
-          type="text"
-        />
-        <button>Search</button>
+        <input @input="handleChange" placeholder="Search" :value="searchQuery" type="text" />
+        <button class="button">Search</button>
       </form>
       <section class="search-results container-grid">
-      <GameCard  :key="result.id" v-for="result in searchResults" :result="result"
-       :name="result.name" :image="result.background_image"
-       @click="selectGame(result.id)" />
+        <GameCard :key="result.id" v-for="result in searchResults" :result="result" :name="result.name"
+          :image="result.background_image" @click="selectGame(result.id)" />
       </section>
     </div>
-      
+
     <div class="genres" v-if="!searched">
-      <h2>Genres</h2>
+      <h2 class="genres">Genres</h2>
       <section class="container-grid">
         <GenreCard v-for="genre in genres" :key="genre.id" :genre="genre" @click="selectGenre(genre.id)" />
       </section>

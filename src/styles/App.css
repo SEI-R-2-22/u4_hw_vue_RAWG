@@ -4,6 +4,7 @@ header {
   justify-content: flex-end;
   align-items: center;
   height: 3em;
+  width: 100%;
 }
 
 header nav a {
@@ -40,6 +41,7 @@ input:focus::placeholder {
 
 main {
   padding: 2em 0;
+  background-color: rgba(51, 32, 81, 0.827);
 }
 
 form {
@@ -61,6 +63,39 @@ button {
   cursor: pointer;
 }
 
+h1 {
+  font-family: 'Special Elite', cursive;
+  font-size: 4rem;
+  padding: 35px;
+  margin: 25px;
+  letter-spacing: 10px;
+  text-shadow:5px 5px #1b1b1b;
+  animation: blink 1s 3;
+}
+
+
+@keyframes blink {
+  50% {
+   color:rgb(250, 189, 59);
+  }
+}
+
+h2 {
+font-family: 'Special Elite', cursive;
+padding: 35px;
+margin-top: 25px;
+text-shadow: 5px 5px #1b1b1b;
+}
+
+select {
+ background-color: rgb(250, 189, 59);
+ border: none;
+ border-radius: 15px;
+ box-shadow: rgb(4, 4, 4) 0px 8px 24px;
+ padding: 5px;
+
+}
+
 .card {
   max-width: 300px;
   max-height: 380px;
@@ -68,10 +103,11 @@ button {
   background-color: #1b1b1b;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.394) 0px 14px 28px, rgba(0, 0, 0, 0.314) 0px 10px 10px;
 }
 
 .card:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .card .image-wrapper {
@@ -129,4 +165,62 @@ button {
 }
 .space {
   justify-content: space-between;
+}
+
+.centered {
+  text-align: center;
+}
+
+.genres {
+  font-size: 2.4rem;
+}
+
+.button {
+  border: none;
+  box-shadow: rgb(4, 4, 4) 0px 8px 24px;
+}
+
+.button:hover {
+  background-color: rgb(250, 189, 59);
+}
+
+.background {
+  background-image: url('https://images.unsplash.com/photo-1614294148960-9aa740632a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+  background-repeat: no-repeat;
+}
+
+.game-names {
+  padding: 20px;
+  background-image: url('https://images.unsplash.com/photo-1614294148960-9aa740632a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  box-shadow: rgb(44, 19, 55) 0px 8px 24px;
+}
+
+.g-names {
+ background-color: rgba(81, 49, 133, 0.827);
+}
+
+.menu {
+  font-size: 29px;
+  font-weight: bolder;
+}
+
+.nav-item {
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  color: rgb(250, 189, 59);
+}
+
+.about {
+  font-size: 1.8rem;
+  padding: 25px;
+  margin: 25px;
+}
+
+.image {
+  width: 80%;
+  height: 60%;
 }

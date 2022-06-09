@@ -1,15 +1,17 @@
 <template>
-   <h1 class="game-names">Games:</h1>
-   <label class="menu" for="rating">Sort By: </label>
-<select class="drop" name="ratings" @change="getSorted($event)">
+  <div class="centered">
+    <h1 class="g-names">Games:</h1>
+  </div>
+  <label class="menu" for="rating">Sort By: </label>
+  <select class="drop" name="ratings" @change="getSorted($event)">
     <option id="drop" value="ascending">Highest Rating</option>
-  <option id="drop" value="descending">Lowest Rating</option>
-  
-</select>
+    <option id="drop" value="descending">Lowest Rating</option>
+
+  </select>
   <div class="container-grid" v-if="games"></div>
-  <div v-for="game in games" :key="game.id">
-   <h3 class="game-names b">{{ game.name }}</h3>
-   <div class="game-names">Rating: {{ game.rating }}</div>
+  <div v-for="game in games" :key="game.id" class="game-names">
+    <h3>{{ game.name }}</h3>
+    <div>Rating: {{ game.rating }}</div>
   </div>
 </template>
 

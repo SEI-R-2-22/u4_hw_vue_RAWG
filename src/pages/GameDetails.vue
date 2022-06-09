@@ -6,10 +6,10 @@
     </section>
     <section class="details">
       <div class="flex-row space" ></div>
-      <div>
-        <h3 class="game-names">{{ gameDetails.name }}</h3>
-        <p class="b">{{ gameDetails.description }}</p>
-        <p class="b"> Rating: {{ gameDetails.rating }}</p>
+      <div class="centered">
+       <h2 class="g-names">{{ gameDetails.name }}</h2>
+        <p class="game-names">{{ gameDetails.description_raw }}</p>
+        <p class="game-names"> Rating: {{ gameDetails.rating }}</p>
       </div>
     </section>
   </div>
