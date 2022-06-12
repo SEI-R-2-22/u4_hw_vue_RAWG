@@ -17,7 +17,7 @@
 
 <script>
   import axios from 'axios'
-  const API_KEY = process.env.VUE_APP_RAWG_KEY;
+  const API_KEY = '75b163d3895045b49e598c729b21a647'
   export default {
     name: 'ViewGames',
     data: () => ({
